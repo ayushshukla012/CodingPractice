@@ -7,13 +7,14 @@ public class gameWithStones
         int n = scanner.nextInt();
         int m = scanner.nextInt();
 
-        int totalIntersectionPoints = n * m;
+        int totalIntersectionPoints = Math.min(n, m);
 
         if (totalIntersectionPoints % 2 == 0) {
-            System.out.println("Akshat");
-        } else {
             System.out.println("Malvika");
+        } else {
+            System.out.println("Akshat");
         }
          scanner.close();  
      }
 }
+
