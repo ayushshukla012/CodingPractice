@@ -5,7 +5,7 @@ public class TrickySum {
         Scanner scanner = new Scanner(System.in);
         int t = scanner.nextInt();
 
-        for (int i = 0; i < t; i++) {
+        while (t-- > 0) {
             long n = scanner.nextLong();
             long result = calculateSum(n);
             System.out.println(result);
@@ -15,15 +15,13 @@ public class TrickySum {
     }
 
     static long calculateSum(long n) {
-        // Finding the highest power of 2 less than or equal to n
-        long powerOfTwo = 1;
-        while (powerOfTwo <= n) {
-            powerOfTwo *= 2;
-        }
-        powerOfTwo /= 2;
+         long sum = n * (n + 1) / 2;
 
-        // Calculating the sum as per the given conditions
-        return (n * (n + 1) / 2) - 2 * powerOfTwo;
+        // Subtract powers of 2 twice
+        for (long i = 1; i <= n; i *= 2) {
+            sum -= 2 * i;
+        }
+        return sum;
     }
 }
 
