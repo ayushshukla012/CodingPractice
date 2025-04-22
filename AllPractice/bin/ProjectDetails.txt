@@ -1,0 +1,25 @@
+Project Description
+
+* Use of WhoIS
+We used WHOIS to verify domain availability before registration. In our Domain Service, we used a WHOIS API for structured responses, cached frequent lookups using Redis, and handled API rate limits with fallback logic. For bulk domain operations, we ran WHOIS checks in parallel threads using an ExecutorService to speed up the process.
+
+* How it is used
+In Domain Service:
+Before registering a domain → WHOIS lookup is made
+
+If available → proceed, else show message to user
+
+Frequently queried results are cached using Redis to improve performance
+
+* Use WHOIS APIs (Paid or Free)
+Example REST call
+GET https://api.whoisxmlapi.com/v1/whois?domain=example.com&apiKey=xxxx
+
+Response
+{
+  "domainName": "example.com",
+  "registrar": "GoDaddy",
+  "creationDate": "1995-08-13",
+  "expirationDate": "2026-08-13",
+  "status": "registered"
+}
