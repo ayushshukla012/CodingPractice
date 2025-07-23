@@ -14,7 +14,32 @@ public class DetectLoopAndRemove {
         return false;
         
     }
-    
+    public static void detectAndRemoveCycle1(Node head) {
+        Node slow = head;
+        Node fast = head;
+
+        while(fast!=null || fast.next != null) {
+            slow=slow.next;
+            fast=fast.next.next;
+
+            if(slow == fast) {
+                System.err.println("Loop detected");
+                break;
+            }
+        }
+        if(slow != fast) {
+            System.out.println("No loop found");
+            return;
+        }
+
+        slow=head;
+        while(slow.next!=fast.next){
+            slow=slow.next;
+            fast=fast.next;
+        }
+        fast.next=null;
+    }
+
     public static void detectAndRemoveCycle(Node head) {
         Node slow = head;
         Node fast = head;

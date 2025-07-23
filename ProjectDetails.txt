@@ -1,5 +1,21 @@
 Project Description
 
+
+* What is WHOIS?
+WHOIS is a protocol and public database that stores registration information about domain names. It provides details such as:
+
+Domain ownership (registrant)
+
+Registration and expiration dates
+
+Registrar (like GoDaddy, Namecheap)
+
+Contact info
+
+DNS servers
+
+Think of WHOIS as a "directory of domain names."
+
 * Use of WhoIS
 We used WHOIS to verify domain availability before registration. In our Domain Service, we used a WHOIS API for structured responses, cached frequent lookups using Redis, and handled API rate limits with fallback logic. For bulk domain operations, we ran WHOIS checks in parallel threads using an ExecutorService to speed up the process.
 
